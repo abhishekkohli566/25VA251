@@ -3,138 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Function in js</title>
+    <title>Document</title>
 </head>
 <body>
     <script>
-
-        //fumction :- block of code designed to perform a specified task
-        //types of function - with paramter without parameter and with default paramter 
-        //normal function  without para 
+        // Function : block of code , design to perform specific task
         
-        function demo(){
-            console.log("hello js");
-
+        // Function with parameter
+        function demo1(text) {
+            console.log("Hello "+ text);
         }
-        demo(); // function calling 
-        //function with parameter 
-        function demo1(text){
-            console.log("hello" +text );
+        demo1("World");
 
+        // Function with default parameter
+        function add(a,b=22) {
+            var num1=a;
+            var num2=b;
+            var res=num1+num2;
+            console.log("Addition of two numbers is :" + res);
         }
-        demo1("react");
+        add(34);
 
-        // function with default parameter
+        // Synchronous (sync) operations run sequentially, blocking further
+        //      execution until a task completes, providing immediate consistency.
 
-         function add(a,b){
-        var num1=a;
-        var num2=b;
-        var res=num1+num2;
-        console.log("Addition of two number is " + res)
+        // Asynchronous (async) operations run concurrently or non-blockingly,
+        //        allowing other tasks to proceed while waiting for a response, boosting efficiency and scalability in I/O-heavy applications....
+
+        function add(a,b) {
+            console.log("Addition is :" + (a+b));
         }
-        add(34,3);
+        function sub(a,b) {
+            console.log("Substraction is :" + (a-b));
+        }
+        function mul(a,b) {
+            console.log("Multiplication is :" + (a*b));
+        }
 
-        //synchronus and aasynchrounus
+        add(10,5);
+        sub(10,5);
+        mul(10,5);
 
-       // function cal(){
-            
-             // function add(a,b){
-           //     console.log("addition is " + (a+b));
-             //}
+        // one line arrow function
+        let msg1 = age => age >= 18 && console.log("valid age");
+        msg1(19);
 
-             // function sub(x,y){
-              //console.log( "subtraction is " +(x-y));
-      //  }
-        // function mul(p,q){
-          //     console.log( "multiplication is " +(p*q));
-       // }
-      //  mul(9,6);
-       // sub(5,7);
-       // add(2,4)
-       // }
-       // cal(); 
-
-        //anonyonomus function - a function that does not have a identifier(name) associated with it 
-
-         let msg=function(){
-           console.log("hello abes")
-         }
-         msg();
-
-         //short code for above function
-          let msg1=()=>console.log("hello react ");
-          msg1();
-
-          //arrow function with multiple lines
-           let msg2=(age)=>{
-            if(age>=18){
+        // arrow function with multiple lines
+        let msg2=(age)=> {
+            if (age>=18) {
                 console.log("valid age");
             }
-           }
-           msg2(23);
-
-           // call back function
-            function cal(a,b,callback){
-                var num1=a;
-                console.log(" first number is " + num1);
-                var num2=b;
-
-                console.log( " second number is " + num2);
-                var res=num1+num2;
-                callback(res);
-
-            }
-
-            function display(res){
-                console.log("result is " + res);
-            }
-            cal(3,4,display);
-
-            //calback using settimeout api
-             function greeting(){
-                document.writeln("hello student")
-             }
-             function loading(){
-                document.writeln("data loading.... ");
-             }
-             loading();
-              setTimeout(greeting,2000);
-
-              //calback hell is a situation in js 
-
-              //js promises; js promises were created to make asynchronums js easier to use
-              //promises stages....
-              //pending -operation started(not finished)
-              // rejected- operation failed
-
-              //fullfiled- operation completed
-              let promises=new Promises(function(resovle,reject){
-                let myAge=20;
-            if(myAge>=18){
-                resovle("valid age");
-            }    
-        else{
-            reject("wait for next year")
-        }         
-     });
-     Promises.then(result=>console.log(result)).catch
-    (error=>console.log(error)); 
-
-    //fetch api
-
-    async function userData(){
-        let userResponse=await fetch('https://dummyjson.com');
-        let userDataRes=await userResponse.json();
-        console.log(userDataRes);
-    }
-    userData();
-    //async await using try catch
-    async function productDetail(){
-        try{
-            let proRes=fetch('https://fakestoreapi.com/products');
-            let proResData=
         }
+        msg2(23);
+
+        // call back function
+
+        function cal(a, b, callback) {
+            var num1 = 12;
+            console.log("First number is :" + num1);
+
+            var num2 = 18;
+            console.log("Second number is :" + num2);
+
+            var res = num1 + num2;
+            callback(res);
+        }
+
+        function display(res) {
+        console.log("Result is :" + res);
+        }
+        cal(0, 0, display); // just pass anything for a, b
+
+        // or
+
+        function cal(a, b, callback) {
+            console.log("First number is :" + a);
+            console.log("Second number is :" + b);
+            var res = a + b;
+            callback(res);
+        }
+        function display(res) {
+        console.log("Result is :" + res);
+        }
+
+        cal(12, 18, display);
+
+        // call back using the setTimeout API
+
+        function greeting() {
+            document.write("Hello abes");
+        }
+        function loading() {
+            document.write("Data Loading....");
+        }
+        loading();
+        setTimeout(greeting,2000);
+
+        // CALL BACK HELL - Jab ek callback ke andar dusra callback, uske andar fir dusra… aise chain ban jati hai (deep nesting) → usko callback hell bolte hain
+        // Function ke andar function ke andar function… bahut zyada level tak
+
+        // STAGES OF PROMISE
+        // Pending - Initial state - Kaam chal raha hota hai
+        // Fulfilled - Kaam successfully complete ho gaya , Result mil gaya
+        // Rejected - Kaam fail ho gya , error aa gya
+
+        setTimeout(() => {
+            console.log("sachin gurjar");
+
+            setTimeout(() => {
+                console.log("gurjar deepanshu");
+
+                setTimeout(() => {
+                    console.log("aryan");
+
+                     setTimeout(() => {
+                         console.log("vishesh");
+            }, 1000);
+
+        }, 1000);
+
+    }, 1000);
+
+}, 1000);
+
+// Fetch API
+
+async function userData() {
+    let userResponse=await fetch('https://api.escuelajs.co/api/v1/products');
+    let userDataRes=await userResponse.json();
+    console.log(userDataRes);
+}
+userData();
+
+// asycn await using try catch
+
+async function productDetails() {
+    try {
+        let proRes = await fetch('https://api.escuelajs.co/api/v1/products');
+        let proResData = await proRes.json();
+        console.log(proResData);
+    } catch (error) {
+        console.log("not valid data " + error);
     }
-                    </script>
+}
+productDetails();
+
+
+    //IIFE :-a JavaScript function that runs as soon as it is defined. 
+    // It is a design pattern used to create a private scope, preventing variables from polluting the global namespace.
+
+    (function(){
+        console.log("hello IIFE");
+    })();
+    //short code for above function 
+    (msg=>console.log("IIFE"))();
+
+    console.log(typeof(msg));
+
+    //local storage- 
+    
+
+    let myInfo={
+          name:"abhishek",
+           age:22,
+            city:"mzn",
+            address:null,
+            mobile:9219264188,
+    };
+   
+    let myInfoData=JSON.stringify(myInfo);
+
+    //set the data
+    localStorage.setItem('prefrences',myInfoData);
+    //get data(retrive data)
+    let myPrefrence=localStorage.getItem('prefrences');
+
+    // retreive the data and conveet into json objece;
+    let myInfoPre=JSON.parse(myPrefrence);
+    //acces key
+    console.log(myInfoPre.name);
+
+
+    //higher order function - 
+
+     let num=[3,4,5,6,7,8,9,11,2,1,];
+     let result=num.map(n=>n*2);
+     console.log(result);
+    
+     let sum=num.reduce((total,n)=>total+n);
+     console.log(sum);
+
+      //filter
+      let sorting=num.filter(n=>n>3);
+      console.log(sorting); 
+
+      //for each - exectue a provided function once for ecah aarray element typicaaaly for side effects like jogging and does not return new array
+       num.forEach((n)=>console.log(n*n));
+       console.log(` updated array is ${num}`);
+
+       
+    </script>
+
 </body>
 </html>
