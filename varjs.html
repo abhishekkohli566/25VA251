@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> var data type in js</title>
+</head>
+<body><script>
+    //js data value type in js
+    // primitive - single value varibae which are ammutable
+    //string number ,bolen,undefined,null,bigint,symbol
+
+    var myName="abhishek kohli";
+    console.log(myName);
+    console.log(typeof(myName));
+
+    //number
+    var myMob="9219264188";
+    console.log(myName +  "mobile number is " + myMob);
+     
+
+    //boolean
+    var isMarried=false;
+    console.log(myName + "is married ? " + isMarried);
+
+    //undefined
+    var myEmail="abhishekkohli566@gmail.com"
+    console.log( myEmail);
+    console.log(typeof(myEmail));
+
+    //null
+    var myAddress=null;
+    console.log(myAddress);
+    console.log(typeof(myAddress));
+    //BigInt
+    var myVal= BigInt(9219264188768764836248);
+    console.log(myVal);
+    console.log(typeof(myVal));
+
+    //symbol
+    var name1=Symbol("abhishek kohli");
+    var name2=Symbol("abhishek kohli");
+    console.log(name1==name2);
+
+
+    //refrence(object) typed== mutable in memory and keeps values in pair
+    //object,function,array
+
+    //objects are defined in pair of  key and its value.
+
+    let myInfo={
+      name:"abhishek kohli", age:23 , isMarried:false, mob:9219264188, add:null, branch:"cse", section:15 
+
+    };
+    console.log(myInfo);
+    console.log(myInfo.name); //access objects's key i.e name
+    //object length 
+     let keys = Object.keys(myInfo);
+     console.log("myInfo object  lenghth" +keys.length);
+
+    //function - block of code that perform particular task 
+    function  cal(){
+        var num1=45;
+        var num2=40;
+        var res=num1+num2;
+        console.log("addition of two number is " +res);
+        console.log(typeof(cal));
+
+    }
+    cal();
+
+    //array- colection of any data types in js
+    //for similar data types
+    let studentList=["ayush" , "vishal" , "dubey"];
+    console.log(studentList[1]);
+
+    let vikasInfo=["vikas singh" ,23 ,false, null, "cse", 15] ;
+    console.log(vikasInfo[1]);
+    console.log(typeof(vikasInfo));
+     //to ittrate array member 
+     for(let i=0;i<vikasInfo.length;i++){
+     console.log(vikasInfo[i]);
+    }
+   </script>
+</body>
+</html>
